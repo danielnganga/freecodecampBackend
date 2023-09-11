@@ -13,4 +13,12 @@ class ProductController extends Controller
     public function create(){
         return view('products.create');
     }
+    public function store(Request $request) {
+        $data = $request->validate([
+            'name' => 'required',
+            'qty' => 'required|numeric',
+            'desc' => 'required|max:255',
+            'price' => 'required|numeric',
+        ]);
+    }
 }
